@@ -123,8 +123,8 @@ Combine the commands:
 .  forvalues index = 1/`r(N)'{
 .    dict mycountrylist getvalues in `index'
 .    
-.    gen %acronym = country_var_in_current_frame == "s(country)"
-.    label var s(acronym) "s(country) (s(region))"
+.    gen `s(acronym)' = country_var_in_current_frame == "`s(country)'"
+.    label var `s(acronym)' "`s(country)' (`s(region)')"
 .  }
 ```
 
