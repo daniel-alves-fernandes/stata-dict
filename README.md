@@ -47,6 +47,7 @@ Get the index of all countries in Western Europe:
 
 ``` stata
 . dict getindex mycountrylist if (region == "Western Europe"), match(all)
+
 1 2 3 9 11 12 15
 ```
 
