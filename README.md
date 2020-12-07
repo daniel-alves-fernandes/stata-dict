@@ -48,7 +48,7 @@ Get the index of all countries in Western Europe:
 ``` stata
 . dict getindex mycountrylist if (region == "Western Europe"), match(all)
 
-1 2 3 9 11 12 15
+  1 2 3 9 11 12 15
 ```
 
 Get values associated with a key:
@@ -57,10 +57,10 @@ Get values associated with a key:
 . dict getvalues mycountrylist if (country == "Germany")
 . sreturn list
 
-macros:
-             s(region) : "Western Europe"
-            s(acronym) : "DE"
-            s(country) : "Germany"
+  macros:
+              s(region) : "Western Europe"
+              s(acronym) : "DE"
+              s(country) : "Germany"
 ```
 
 Get values of a given index:
@@ -69,10 +69,10 @@ Get values of a given index:
 . dict getvalues mycountrylist in 10
 . sreturn list
 
-macros:
-             s(region) : "Southern Europe"
-            s(acronym) : "IT"
-            s(country) : "Italy"
+  macros:
+               s(region) : "Southern Europe"
+              s(acronym) : "IT"
+              s(country) : "Italy"
 ```
 
 Pull information from one observation of the dictionary to a Stata command:
