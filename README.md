@@ -58,7 +58,7 @@ Get values associated with a key:
 . sreturn list
 
   macros:
-              s(region) : "Western Europe"
+               s(region) : "Western Europe"
               s(acronym) : "DE"
               s(country) : "Germany"
 ```
