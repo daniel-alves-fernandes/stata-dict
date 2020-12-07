@@ -15,7 +15,7 @@ Stata 16 or higher
 ssc install dict
 ```
 
-**How it works:**<br>
+## How it works
 Let's consider the following dictionary in a csv file named `countries.csv`:
 
 
