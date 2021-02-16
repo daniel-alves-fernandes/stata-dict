@@ -1,6 +1,6 @@
 *******************************************************************************
 * dict.ado
-* version 2.0.3
+* version 2.1
 
 * author: Daniel Alves Fernandes
 * contact: daniel.fernandes@eui.eu
@@ -271,14 +271,13 @@ program define dict_loop
     local cmd_args
     local cmd_match = 1
     while (`cmd_match' == 1){
-      if regexm(`"`cmd_parse'"',"`arg'[a-zA-Z0-9_]*"){
-        local cmd_args: display "`cmd_args' " regexs(0)
+      if ustrregexm(`"`cmd_parse'"',"`arg'\w{1,}\b"){
+        local cmd_args: display "`cmd_args' " ustrregexs(0)
       }
-      local cmd_parse: ///
-      display regexr(`"`cmd_parse'"',"`arg'[a-zA-Z0-9_]*","")
-      local cmd_match = regexm(`"`cmd_parse'"',"`arg'[a-zA-Z0-9_]*")
+      local cmd_parse: display ustrregexra(`"`cmd_parse'"',"`arg'\w{1,}\b","")
+      local cmd_match = ustrregexm(`"`cmd_parse'"',"`arg'\w{1,}\b")
     }
-    local cmd_args: display subinstr("`cmd_args'","`arg'","",.)
+    local cmd_args: display usubinstr("`cmd_args'","`arg'","",.)
     capture: confirm variable `cmd_args', exact
     if (_rc == 111){
       noisily: display as error "some arguments not found in dictionary"
@@ -290,9 +289,9 @@ program define dict_loop
         local cmd `"`command'"'
         foreach a in `arguments'{
           local val: display `a'[`i']
-          local cmd: display subinstr(`"`cmd'"',"`arg'`a'",`"`val'"',.)
+          local cmd: display usubinstr(`"`cmd'"',"`arg'`a'",`"`val'"',.)
         }
-        if ("`code'" == "code") noisily: display as input strtrim(`"`cmd'"')
+        if ("`code'" == "code") noisily: display as input ustrtrim(`"`cmd'"')
         noisily frame `mframe': `cmd'
       }
     }
@@ -300,9 +299,9 @@ program define dict_loop
       local cmd `"`command'"'
       foreach a in `arguments'{
         local val: display `a'[`index']
-        local cmd: display subinstr(`"`cmd'"',"`arg'`a'",`"`val'"',.)
+        local cmd: display usubinstr(`"`cmd'"',"`arg'`a'",`"`val'"',.)
       }
-      if ("`code'" == "code") noisily: display as input strtrim(`"`cmd'"')
+      if ("`code'" == "code") noisily: display as input ustrtrim(`"`cmd'"')
       noisily frame `mframe': `cmd'
     }
   }
