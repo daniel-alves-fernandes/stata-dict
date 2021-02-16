@@ -1,5 +1,5 @@
 {smcl}
-{* *! version 2.0.3  15nov2020}{...}
+{* *! version 2.1  16fev2021}{...}
 
 {title:Dict}
 
